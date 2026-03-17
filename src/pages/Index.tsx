@@ -93,7 +93,10 @@ const Index = () => {
             <p className="text-sm font-medium text-foreground">Dag Brede Ihle</p>
             <p className="meta-label mt-1">Ihle Studio</p>
           </div>
-          <div className="text-right">
+          <div className="md:text-center">
+            <a href="mailto:dag@ihlestudio.no" className="meta-label transition-colors duration-300 hover:text-foreground">dag@ihlestudio.no</a>
+          </div>
+          <div className="md:text-right">
             <p className="meta-label">Org.nr 930 939 846</p>
             <p className="meta-label mt-1">Norge</p>
           </div>
