@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const ease = [0.4, 0, 0.2, 1];
+const ease = [0.4, 0, 0.2, 1] as const;
 
 const stagger = {
   hidden: {},
