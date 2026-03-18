@@ -81,20 +81,24 @@ const Index = () => {
         <motion.section variants={fadeUp} className="mb-20 md:mb-32">
           <span className="meta-label mb-8 block">Portefølje</span>
           <div className="grid gap-4 md:grid-cols-2">
-            {portfolioItems.map((item) => (
-              <div key={item.name} className="glass-card group p-8">
-                <div className="mb-6 flex items-center justify-between">
-                  <span className="meta-label">{item.role}</span>
-                  <span className="meta-label">{item.status}</span>
-                </div>
-                <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
-                  {item.name}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+            {portfolioItems.map((item) => {
+              const Wrapper = item.url ? 'a' : 'div';
+              const wrapperProps = item.url ? { href: item.url, target: "_blank", rel: "noopener noreferrer" } : {};
+              return (
+                <Wrapper key={item.name} {...wrapperProps} className="glass-card group p-8 block">
+                  <div className="mb-6 flex items-center justify-between">
+                    <span className="meta-label">{item.role}</span>
+                    <span className="meta-label">{item.status}</span>
+                  </div>
+                  <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
+                    {item.name}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
+                </Wrapper>
+              );
+            })}
           </div>
         </motion.section>
 
