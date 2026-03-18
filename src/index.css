@@ -114,6 +114,28 @@
     border-color: rgba(255, 255, 255, 0.2);
   }
 
+  :root .glass-card {
+    border-color: rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.02);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.03);
+  }
+
+  :root .glass-card:hover {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .dark .glass-card {
+    border-color: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .glass-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
   .meta-label {
     font-family: 'Geist Mono', monospace;
     @apply text-[10px] uppercase tracking-[0.2em] text-muted-foreground;
