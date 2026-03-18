@@ -24,6 +24,7 @@ const portfolioItems = [
     description: "Produktselskap som utvikler digitale plattformer. Bak appen Vinn – en ny måte å spare og vinne på.",
     role: "Eier & Grunnlegger",
     status: "Aktiv",
+    url: "https://luckylabs.no",
   },
   {
     name: "Private Investeringer",
