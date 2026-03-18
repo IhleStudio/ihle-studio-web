@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 const ease = [0.4, 0, 0.2, 1] as const;
 
@@ -32,8 +34,10 @@ const portfolioItems = [
 ];
 
 const Index = () => {
+  const { isDark, toggleTheme } = useTheme();
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -46,7 +50,16 @@ const Index = () => {
             <h2 className="text-sm font-medium tracking-wide text-foreground">
               Ihle Studio
             </h2>
-            <span className="meta-label">Holdingselskap</span>
+            <div className="flex items-center gap-3">
+              <span className="meta-label">Holdingselskap</span>
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="text-muted-foreground transition-colors duration-300 hover:text-foreground"
+              >
+                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
+            </div>
           </div>
         </motion.header>
 
@@ -86,8 +99,7 @@ const Index = () => {
         {/* Footer */}
         <motion.footer
           variants={fadeUp}
-          className="flex flex-col gap-6 border-t pt-8 md:flex-row md:items-end md:justify-between"
-          style={{ borderColor: "rgba(255,255,255,0.08)" }}
+          className="flex flex-col gap-6 border-t border-border pt-8 md:flex-row md:items-end md:justify-between"
         >
           <div>
             <p className="text-sm font-medium text-foreground">Dag Brede Ihle</p>
