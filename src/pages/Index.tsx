@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
-import { Switch } from "@/components/ui/switch";
 
 const ease = [0.4, 0, 0.2, 1] as const;
 
@@ -53,11 +52,13 @@ const Index = () => {
             </h2>
             <div className="flex items-center gap-3">
               <span className="meta-label">Holdingselskap</span>
-              <div className="flex items-center gap-2">
-                <Sun className="h-3.5 w-3.5 text-muted-foreground" />
-                <Switch checked={isDark} onCheckedChange={toggleTheme} aria-label="Toggle theme" />
-                <Moon className="h-3.5 w-3.5 text-muted-foreground" />
-              </div>
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="text-muted-foreground transition-colors duration-300 hover:text-foreground"
+              >
+                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
             </div>
           </div>
         </motion.header>
