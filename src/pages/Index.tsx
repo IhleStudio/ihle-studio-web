@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
-import { Switch } from "@/components/ui/switch";
 
 const ease = [0.4, 0, 0.2, 1] as const;
 
