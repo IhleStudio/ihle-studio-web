@@ -31,6 +31,7 @@ const portfolioItems = [
     description: "Utvalgte posisjoner i norske og internasjonale selskaper med langsiktig verdiskapning som mål.",
     role: "Investor",
     status: "Pågående",
+    url: undefined,
   },
 ];
 
