@@ -18,20 +18,45 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
 
-const portfolioItems = [
+type PortfolioItem = {
+  name: string;
+  description: string;
+  role: string;
+  status: string;
+  url?: string;
+  product?: {
+    name: string;
+    description: string;
+    url?: string;
+  };
+};
+
+const portfolioItems: PortfolioItem[] = [
   {
     name: "Lucky Labs AS",
-    description: "Produktselskap som utvikler digitale plattformer. Bak appen Vinn – en ny måte å spare og vinne på.",
+    description: "Produktselskap som utvikler digitale plattformer for sparing og spill.",
     role: "Eier & Grunnlegger",
     status: "Aktiv",
     url: "https://luckylabs.no",
+    product: {
+      name: "Vinn",
+      description: "En ny måte å spare og vinne på.",
+      url: "https://vunnet.no",
+    },
   },
   {
-    name: "Private Investeringer",
-    description: "Utvalgte posisjoner i norske og internasjonale selskaper med langsiktig verdiskapning som mål.",
-    role: "Investor",
-    status: "Pågående",
-    url: undefined,
+    name: "Rett i kjelleren",
+    description: "Informasjonstjeneste som dokumenterer prisinkonsistenser i AS Vinmonopolets katalog — tilfeller der samme vin er registrert med to ulike artikkelnummer til ulik pris.",
+    role: "Eier & Grunnlegger",
+    status: "Aktiv",
+    url: "https://rettikjelleren.no",
+  },
+  {
+    name: "Aceno AS",
+    description: "Konsulentselskap der kodekvalitet møter designkompetanse, drevet av erfaring og nysgjerrighet. Senior teknisk rådgivning og utvikling for digitale produkter.",
+    role: "Medgrunder & Konsulent",
+    status: "Aktiv",
+    url: "https://aceno.no",
   },
 ];
 
@@ -82,21 +107,43 @@ const Index = () => {
           <span className="meta-label mb-8 block">Portefølje</span>
           <div className="grid gap-4 md:grid-cols-2">
             {portfolioItems.map((item) => {
-              const Wrapper = item.url ? 'a' : 'div';
-              const wrapperProps = item.url ? { href: item.url, target: "_blank", rel: "noopener noreferrer" } : {};
+              const MainWrapper = item.url ? 'a' : 'div';
+              const mainProps = item.url
+                ? { href: item.url, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+              const ProductWrapper = item.product?.url ? 'a' : 'div';
+              const productProps = item.product?.url
+                ? { href: item.product.url, target: "_blank", rel: "noopener noreferrer" }
+                : {};
               return (
-                <Wrapper key={item.name} {...wrapperProps} className="glass-card group p-8 block">
-                  <div className="mb-6 flex items-center justify-between">
-                    <span className="meta-label">{item.role}</span>
-                    <span className="meta-label">{item.status}</span>
-                  </div>
-                  <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground">
-                    {item.name}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-                </Wrapper>
+                <div key={item.name} className="glass-card p-8">
+                  <MainWrapper {...mainProps} className="group block">
+                    <div className="mb-6 flex items-center justify-between">
+                      <span className="meta-label">{item.role}</span>
+                      <span className="meta-label">{item.status}</span>
+                    </div>
+                    <h3 className="mb-3 text-xl font-medium tracking-tight text-foreground transition-colors duration-300 group-hover:text-foreground/80">
+                      {item.name}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </MainWrapper>
+                  {item.product && (
+                    <ProductWrapper
+                      {...productProps}
+                      className="group mt-6 block border-t border-border/60 pt-5"
+                    >
+                      <span className="meta-label mb-2 block">Produkt</span>
+                      <p className="text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-foreground/80">
+                        {item.product.name}
+                      </p>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                        {item.product.description}
+                      </p>
+                    </ProductWrapper>
+                  )}
+                </div>
               );
             })}
           </div>
